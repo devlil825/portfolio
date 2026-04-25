@@ -6,25 +6,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .page-hero{background:linear-gradient(135deg,var(--bg2) 0%,var(--accent-pale) 100%);padding:calc(var(--nav-h) + 4rem) 2rem 4rem;border-bottom:1px solid var(--border)}
-    .page-hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:.96;color:var(--text);margin-bottom:1rem}
-    .page-hero h1 em{font-family:var(--ff-s);font-style:italic;color:var(--accent);font-weight:600}
-    .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem}
-    .exp-layout{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start}
-    .exp-sidebar{position:sticky;top:calc(var(--nav-h) + 2rem)}
-    .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.2rem}
-    .sidebar-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:2px solid var(--accent)}
-    .sidebar-skill-list{display:flex;flex-direction:column;gap:.5rem}
-    .ssl-item{display:flex;align-items:center;justify-content:space-between;font-size:.85rem;color:var(--text2)}
-    .ssl-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-    .edu-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:1.2rem}
-    .edu-mini-top{background:linear-gradient(135deg,var(--accent-pale),var(--bg2));padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)}
-    .edu-mini-badge{font-family:var(--ff-m);font-size:.63rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
-    .edu-mini-deg{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.25}
-    .edu-mini-body{padding:1.2rem 1.5rem;font-size:.83rem;color:var(--text3)}
-    @media(max-width:1024px){.exp-layout{grid-template-columns:1fr}.exp-sidebar{position:static}.stats-bar{grid-template-columns:1fr 1fr}}
-    @media(max-width:480px){.stats-bar{grid-template-columns:1fr 1fr}}
-  </style>
+  @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: linear-gradient(135deg, var(--bg2) 0%, var(--accent-pale) 100%);
+    padding: calc(var(--nav-h) + 3rem) 1.1rem 3rem;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-weight: 800; letter-spacing: -.04em;
+    line-height: .96; color: var(--text); margin-bottom: .9rem;
+  }
+  .page-hero h1 em { font-family: var(--ff-s); font-style: italic; color: var(--accent); font-weight: 600; }
+
+  /* STATS BAR — 2 cols mobile, 4 cols desktop */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+  }
+
+  /* EXP LAYOUT — stacked mobile, side-by-side desktop */
+  .exp-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+  }
+  .exp-main { width: 100%; min-width: 0; }
+  .exp-sidebar { width: 100%; }
+
+  /* Sidebar cards */
+  .sidebar-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1.5rem;
+    box-shadow: var(--shadow-sm); margin-bottom: 1.1rem;
+  }
+  .sidebar-card:last-child { margin-bottom: 0; }
+  .sidebar-card h3 {
+    font-size: .95rem; font-weight: 700; color: var(--text);
+    margin-bottom: 1.1rem; padding-bottom: .55rem;
+    border-bottom: 2px solid var(--accent);
+  }
+  .sidebar-skill-list { display: flex; flex-direction: column; gap: .48rem; }
+  .ssl-item {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: .84rem; color: var(--text2);
+  }
+  .ssl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* Mini edu cards inside sidebar */
+  .edu-mini {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r-lg); overflow: hidden;
+    box-shadow: var(--shadow-sm); margin-bottom: 1rem;
+  }
+  .edu-mini:last-child { margin-bottom: 0; }
+  .edu-mini-top {
+    background: linear-gradient(135deg, var(--accent-pale), var(--bg2));
+    padding: 1rem 1.3rem; border-bottom: 1px solid var(--border);
+  }
+  .edu-mini-badge {
+    font-family: var(--ff-m); font-size: .6rem; color: var(--accent);
+    letter-spacing: .1em; text-transform: uppercase; margin-bottom: .28rem;
+  }
+  .edu-mini-deg { font-size: .92rem; font-weight: 700; color: var(--text); line-height: 1.25; }
+  .edu-mini-body { padding: 1rem 1.3rem; font-size: .82rem; color: var(--text3); }
+
+  /* Desktop layout */
+  @media (min-width: 900px) {
+    .page-hero { padding: calc(var(--nav-h) + 4rem) 2rem 4rem; }
+    .stats-bar { grid-template-columns: repeat(4, 1fr); margin-bottom: 3.5rem; }
+    .exp-layout { flex-direction: row; gap: 3.5rem; align-items: flex-start; }
+    .exp-main { flex: 1; min-width: 0; }
+    .exp-sidebar { flex: 0 0 340px; position: sticky; top: calc(var(--nav-h) + 1.5rem); }
+  }
+
+  @media (min-width: 1100px) {
+    .exp-sidebar { flex: 0 0 360px; }
+  }
+</style>
 </head>
 <body>
 <header>
@@ -66,7 +132,7 @@
 
       <div class="exp-layout">
         <!-- TIMELINE -->
-        <div>
+        <div class="exp-main">
           <div class="eyebrow reveal">Work History</div>
           <div class="timeline">
 
@@ -221,7 +287,7 @@
     <div class="footer-bottom"><p class="footer-copy">© 2025 Lilakant (Lil) Pokhrel</p></div>
   </div>
 </footer>
-<style>@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}</style>
+
 <script src="../js/main.js"></script>
 </body>
 </html>

@@ -6,18 +6,79 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .page-hero{background:linear-gradient(135deg,var(--indigo-light) 0%,var(--bg2) 100%);padding:calc(var(--nav-h) + 4rem) 2rem 4rem;border-bottom:1px solid var(--border)}
-    .page-hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:.96;color:var(--text);margin-bottom:1rem}
-    .page-hero h1 em{font-family:var(--ff-s);font-style:italic;color:var(--indigo);font-weight:600}
-    .proj-grid-main{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
-    .proj-card-featured{grid-column:1/-1}
-    .feat-proj-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .feat-proj-visual{background:linear-gradient(135deg,var(--accent-pale),var(--accent-light));display:flex;align-items:center;justify-content:center;font-size:5rem;padding:3rem;border-radius:var(--r-lg) 0 0 var(--r-lg)}
-    .feat-proj-body{padding:2.5rem}
-    .feat-proj-body .proj-title{font-size:1.4rem;margin-bottom:.9rem}
-    .feat-proj-body .proj-desc{font-size:.93rem}
-    @media(max-width:768px){.feat-proj-inner{grid-template-columns:1fr}.feat-proj-visual{border-radius:var(--r-lg) var(--r-lg) 0 0;padding:2rem}.proj-card-featured{grid-column:span 1}.proj-grid-main{grid-template-columns:1fr}}
-  </style>
+  @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: linear-gradient(135deg, var(--indigo-light) 0%, var(--bg2) 100%);
+    padding: calc(var(--nav-h) + 3rem) 1.1rem 3rem;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-weight: 800; letter-spacing: -.04em;
+    line-height: .96; color: var(--text); margin-bottom: .9rem;
+  }
+  .page-hero h1 em { font-family: var(--ff-s); font-style: italic; color: var(--indigo); font-weight: 600; }
+
+  /* PROJECTS GRID — mobile first: single column */
+  .proj-grid-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .proj-card-featured { grid-column: span 1; }
+
+  /* Featured card inner layout — stacked on mobile */
+  .feat-proj-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .feat-proj-visual {
+    background: linear-gradient(135deg, var(--accent-pale), var(--accent-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    padding: 2rem;
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    min-height: 140px;
+  }
+  .feat-proj-body { padding: 1.5rem; }
+  .feat-proj-body .proj-title { font-size: 1.1rem; margin-bottom: .7rem; line-height: 1.3; }
+  .feat-proj-body .proj-desc { font-size: .87rem; line-height: 1.65; }
+
+  /* Tablet: 2-column grid */
+  @media (min-width: 600px) {
+    .proj-grid-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3rem;
+    }
+    .proj-card-featured { grid-column: 1 / -1; }
+  }
+
+  /* Desktop: auto-fill + side-by-side featured card */
+  @media (min-width: 900px) {
+    .page-hero { padding: calc(var(--nav-h) + 4rem) 2rem 4rem; }
+    .proj-grid-main {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .proj-card-featured { grid-column: 1 / -1; }
+    .feat-proj-inner {
+      flex-direction: row;
+    }
+    .feat-proj-visual {
+      flex: 0 0 280px;
+      font-size: 4.5rem;
+      padding: 3rem 2rem;
+      border-radius: var(--r-lg) 0 0 var(--r-lg);
+      min-height: auto;
+    }
+    .feat-proj-body { padding: 2rem 2.2rem; flex: 1; }
+    .feat-proj-body .proj-title { font-size: 1.3rem; }
+    .feat-proj-body .proj-desc { font-size: .92rem; }
+  }
+</style>
 </head>
 <body>
 <header>
@@ -206,7 +267,7 @@
     <div class="footer-bottom"><p class="footer-copy">© 2025 Lilakant (Lil) Pokhrel</p></div>
   </div>
 </footer>
-<style>@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}</style>
+
 <script src="../js/main.js"></script>
 </body>
 </html>
