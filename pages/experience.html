@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience — Lil Pokhrel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-hero{background:linear-gradient(135deg,var(--bg2) 0%,var(--accent-pale) 100%);padding:calc(var(--nav-h) + 4rem) 2rem 4rem;border-bottom:1px solid var(--border)}
+    .page-hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;letter-spacing:-.04em;line-height:.96;color:var(--text);margin-bottom:1rem}
+    .page-hero h1 em{font-family:var(--ff-s);font-style:italic;color:var(--accent);font-weight:600}
+    .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem}
+    .exp-layout{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start}
+    .exp-sidebar{position:sticky;top:calc(var(--nav-h) + 2rem)}
+    .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem;box-shadow:var(--shadow-sm);margin-bottom:1.2rem}
+    .sidebar-card h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:2px solid var(--accent)}
+    .sidebar-skill-list{display:flex;flex-direction:column;gap:.5rem}
+    .ssl-item{display:flex;align-items:center;justify-content:space-between;font-size:.85rem;color:var(--text2)}
+    .ssl-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    .edu-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:1.2rem}
+    .edu-mini-top{background:linear-gradient(135deg,var(--accent-pale),var(--bg2));padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)}
+    .edu-mini-badge{font-family:var(--ff-m);font-size:.63rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+    .edu-mini-deg{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.25}
+    .edu-mini-body{padding:1.2rem 1.5rem;font-size:.83rem;color:var(--text3)}
+    @media(max-width:1024px){.exp-layout{grid-template-columns:1fr}.exp-sidebar{position:static}.stats-bar{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.stats-bar{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="nav"><div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">LP</div>Lil Pokhrel</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li><li><a href="projects.html">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li class="nav-cta-wrap"><a href="contact.html" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <button class="nav-ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="nav-mobile" id="navMobile">
+    <a href="../index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a><a href="experience.html">Experience</a>
+    <a href="contact.html" class="nav-mob-cta">Contact / Hire Me</a>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow" style="opacity:0;animation:slideUp .7s .1s forwards">04 — Work History</div>
+      <h1 style="opacity:0;animation:slideUp .7s .2s forwards">Professional<br><em>Experience</em></h1>
+      <p style="opacity:0;animation:slideUp .7s .35s forwards;font-size:1rem;color:var(--text2);max-width:540px;line-height:1.75">A track record of delivering real impact across data analytics, full-stack development, and IT management in two countries.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- STATS -->
+      <div class="stats-bar reveal">
+        <div class="stat-card"><div class="stat-num" data-count="4" data-suffix="+">4+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="4">4</div><div class="stat-label">Roles Held</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="2">2</div><div class="stat-label">Countries</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="2">2</div><div class="stat-label">Active Roles (2025)</div></div>
+      </div>
+
+      <div class="exp-layout">
+        <!-- TIMELINE -->
+        <div>
+          <div class="eyebrow reveal">Work History</div>
+          <div class="timeline">
+
+            <!-- Data Analyst -->
+            <div class="tl-item reveal">
+              <div class="tl-dot current"></div>
+              <div class="tl-period">
+                May 2025 — Present
+                <span class="tl-current-badge">Current</span>
+              </div>
+              <div class="tl-role">Data Analyst</div>
+              <div class="tl-company">🇳🇵 Rastriya Jeewan Beema Company Limited — Remote, Kathmandu</div>
+              <div class="tl-body">
+                <ul class="tl-bullets">
+                  <li>Analyse insurance data at scale to <strong>identify trends, risks, and business opportunities</strong> across claims, premiums, and policyholder segments.</li>
+                  <li>Monitor key business metrics — claims ratios, premium growth, customer retention — and build <strong>automated anomaly alerts</strong>.</li>
+                  <li>Develop <strong>fraud detection models</strong> using statistical pattern recognition and ML techniques to flag suspicious claims for investigation.</li>
+                  <li>Design and deliver <strong>interactive Power BI dashboards</strong> and executive reports covering operational and strategic KPIs.</li>
+                  <li>Collaborate with actuarial and finance teams to <strong>support data-driven decision-making</strong> that improves efficiency.</li>
+                </ul>
+                <div class="tl-tags">
+                  <span class="skill-tag">Power BI</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+                  <span class="skill-tag">MSSQL Server</span><span class="skill-tag">Pandas</span><span class="skill-tag">Fraud Detection</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Betfred -->
+            <div class="tl-item reveal reveal-delay-1">
+              <div class="tl-dot current"></div>
+              <div class="tl-period">
+                Feb 2025 — Present
+                <span class="tl-current-badge">Current</span>
+              </div>
+              <div class="tl-role">Assistant Sales Manager</div>
+              <div class="tl-company">🇬🇧 Done Brothers (Cash Betting) Ltd — Betfred, United Kingdom</div>
+              <div class="tl-body">
+                <ul class="tl-bullets">
+                  <li>Oversee daily shop operations ensuring full <strong>compliance with UK Gambling Commission regulations</strong> and financial controls.</li>
+                  <li>Manage cash handling, betting terminals, and <strong>end-of-day financial reconciliation</strong>.</li>
+                  <li>Prepare <strong>daily, monthly, and yearly performance reports</strong> using MS Excel and Power BI for area management.</li>
+                  <li>Deliver excellent customer service and <strong>resolve complex customer queries</strong> to maintain satisfaction scores.</li>
+                  <li>Monitor sales performance indicators and assist with <strong>promotional campaign execution</strong>.</li>
+                </ul>
+                <div class="tl-tags">
+                  <span class="skill-tag">Power BI</span><span class="skill-tag">MS Excel</span>
+                  <span class="skill-tag">Financial Reporting</span><span class="skill-tag">Operations</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- IT Officer -->
+            <div class="tl-item reveal reveal-delay-2">
+              <div class="tl-dot"></div>
+              <div class="tl-period">May 2023 — Sep 2024</div>
+              <div class="tl-role">IT Officer</div>
+              <div class="tl-company">🇳🇵 Rastriya Jeewan Beema Company Limited — Kathmandu, Nepal</div>
+              <div class="tl-body">
+                <ul class="tl-bullets">
+                  <li>Managed the <strong>full IT infrastructure</strong> for Nepal's national insurance organisation — servers, network, and end-user support.</li>
+                  <li>Built comprehensive <strong>Power BI and Tableau dashboards</strong> with complex MSSQL stored procedures for executive reporting.</li>
+                  <li>Wrote and optimised <strong>complex SQL queries</strong> for business reporting and ad-hoc data analysis requests from management.</li>
+                  <li>Maintained and <strong>customised the company website</strong>, ensuring data security and continuity of digital operations nationwide.</li>
+                  <li>Resolved critical <strong>system and network issues</strong>, reducing downtime across all branches.</li>
+                </ul>
+                <div class="tl-tags">
+                  <span class="skill-tag">MSSQL Server</span><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span>
+                  <span class="skill-tag">Network Management</span><span class="skill-tag">SQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pearl Infotech -->
+            <div class="tl-item reveal reveal-delay-1">
+              <div class="tl-dot"></div>
+              <div class="tl-period">Dec 2019 — Apr 2023</div>
+              <div class="tl-role">Full-Stack Web Developer</div>
+              <div class="tl-company">🇳🇵 Pearl Infotech Pvt. Ltd. — Kathmandu, Nepal</div>
+              <div class="tl-body">
+                <ul class="tl-bullets">
+                  <li>Developed <strong>frontend and backend systems</strong> using ReactJS, Django, Flask, and the full MERN stack for multiple client projects.</li>
+                  <li>Built <strong>reusable component libraries and RESTful APIs</strong> that reduced development time across projects by standardising patterns.</li>
+                  <li>Led <strong>web strategy for key accounts</strong> — collaborating on API integrations, UI/UX planning, and technical architecture.</li>
+                  <li>Managed <strong>backup procedures, performance testing, load optimisation</strong>, and ongoing maintenance of production applications.</li>
+                  <li>Worked in an <strong>Agile/Scrum environment</strong> using Bitbucket for version control and sprint management.</li>
+                </ul>
+                <div class="tl-tags">
+                  <span class="skill-tag">ReactJS</span><span class="skill-tag">Node.js</span><span class="skill-tag">Django</span>
+                  <span class="skill-tag">Flask</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MySQL</span><span class="skill-tag">REST API</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="exp-sidebar">
+          <div class="sidebar-card reveal">
+            <h3>Education</h3>
+            <div class="edu-mini">
+              <div class="edu-mini-top">
+                <div class="edu-mini-badge">🎓 MSc · 2024</div>
+                <div class="edu-mini-deg">Data Science (Distinction)<br><span style="color:var(--accent);font-size:.82rem">York St John University, London</span></div>
+              </div>
+              <div class="edu-mini-body">
+                <span class="badge badge-green" style="margin-bottom:.7rem;display:inline-flex">🏆 Subject Prize Winner</span>
+                <div>Applied Research: Text Summarisation with Deep Learning Integration</div>
+              </div>
+            </div>
+            <div class="edu-mini">
+              <div class="edu-mini-top">
+                <div class="edu-mini-badge">🎓 BSc · 2019</div>
+                <div class="edu-mini-deg">Computer Science &amp; IT (Distinction)<br><span style="color:var(--amber);font-size:.82rem">Tribhuvan University, Nepal</span></div>
+              </div>
+              <div class="edu-mini-body">Final Year Project: Book Karobar — Web-Based Accounting Solution</div>
+            </div>
+          </div>
+
+          <div class="sidebar-card reveal reveal-delay-1">
+            <h3>Key Technologies</h3>
+            <div class="sidebar-skill-list">
+              <div class="ssl-item"><span>Python / ML Libraries</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>ReactJS / MERN Stack</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>Django / Flask</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>Power BI / Tableau</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>MSSQL / MySQL / MongoDB</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>Azure / GCP</span><span class="ssl-dot"></span></div>
+              <div class="ssl-item"><span>TensorFlow / PyTorch</span><span class="ssl-dot"></span></div>
+            </div>
+          </div>
+
+          <div class="sidebar-card reveal reveal-delay-2" style="background:var(--accent);border-color:var(--accent)">
+            <div style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:.6rem">Open to Opportunities</div>
+            <p style="color:rgba(255,255,255,.8);font-size:.85rem;line-height:1.6;margin-bottom:1.2rem">Actively seeking full-time roles in Data Science, Data Analysis, or Full-Stack Development in the UK.</p>
+            <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center;background:#fff">Contact Me →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo"><div class="footer-logo-mark">LP</div>Lil Pokhrel</div><p class="footer-desc">MSc Data Science &amp; Full-Stack Developer. London, UK.</p><div class="footer-social"><a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">in</a><a href="mailto:lil.pokhrel695@gmail.com">✉</a><a href="tel:+447887622525">📱</a></div></div>
+      <div><div class="footer-col-title">Navigation</div><div class="footer-col-links"><a href="../index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a></div></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-col-links"><a href="mailto:lil.pokhrel695@gmail.com">lil.pokhrel695@gmail.com</a><a href="tel:+447887622525">+44 7887 622 525</a><a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">LinkedIn</a></div></div>
+      <div><div class="footer-col-title">Quick Links</div><div class="footer-col-links"><a href="projects.html">Projects</a><a href="skills.html">Skills</a><a href="contact.html">Hire Me</a></div></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 Lilakant (Lil) Pokhrel</p></div>
+  </div>
+</footer>
+<style>@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}</style>
+<script src="../js/main.js"></script>
+</body>
+</html>

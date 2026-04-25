@@ -1,11 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lil Pokhrel — Data Scientist & Full-Stack Developer based in London, UK. MSc Data Science (Distinction), Subject Prize Winner." />
+  <title>Lil Pokhrel — Data Scientist & Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── HOME-SPECIFIC ── */
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 5rem 2rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow { margin-bottom: 1.2rem; }
+    .hero-h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800; letter-spacing: -.04em;
+      line-height: .96; color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-h1 span { color: var(--accent); }
+    .hero-h1 em {
+      font-family: var(--ff-s); font-style: italic;
+      font-weight: 600; color: var(--amber);
+    }
+    .hero-sub {
+      font-size: 1.1rem; line-height: 1.75;
+      color: var(--text2); max-width: 500px;
+      margin-bottom: 2.2rem;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-chips { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: var(--ff-m); font-size: .7rem;
+      color: var(--text3);
+      padding: .28rem .8rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+    .hero-chip span { color: var(--accent); font-size: .8rem; }
+
+    .hero-right {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 2rem;
+    }
+    .hero-avatar-wrap { position: relative; }
+    .hero-deco {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 2px dashed rgba(42,125,111,.2);
+      top: -20px; left: -20px;
+      animation: spin-slow 20s linear infinite;
+    }
+    .hero-deco2 {
+      position: absolute;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      border: 1px dashed rgba(201,120,58,.15);
+      top: -40px; left: -40px;
+      animation: spin-slow 30s linear infinite reverse;
+    }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .hero-stats-row {
+      display: flex; gap: 1rem;
+      width: 100%;
+    }
+    .h-stat {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .h-stat-n {
+      font-size: 1.8rem; font-weight: 800;
+      color: var(--accent); line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .h-stat-l {
+      font-size: .72rem; color: var(--text3);
+      margin-top: .3rem; line-height: 1.3;
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--accent);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+    .intro-strip h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700; letter-spacing: -.02em;
+      line-height: 1.3;
+    }
+    .intro-strip h2 em {
+      font-family: var(--ff-s); font-style: italic;
+      font-weight: 600; opacity: .9;
+    }
+
+    /* ── ABOUT PREVIEW ── */
+    .about-preview { background: var(--bg2); }
+    .about-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-preview-text p {
+      font-size: .97rem; line-height: 1.8;
+      color: var(--text2); margin-bottom: 1.1rem;
+    }
+    .about-preview-text p strong { color: var(--text); }
+    .about-facts { display: flex; flex-direction: column; gap: .8rem; }
+    .about-fact {
+      display: flex; gap: .9rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-sm);
+    }
+    .af-icon {
+      font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem;
+    }
+    .af-label { font-size: .73rem; color: var(--muted); font-family: var(--ff-m); letter-spacing: .06em; text-transform: uppercase; }
+    .af-val { font-size: .9rem; font-weight: 600; color: var(--text); margin-top: .1rem; }
+    .af-sub { font-size: .78rem; color: var(--text3); margin-top: .1rem; }
+
+    /* ── SKILLS PREVIEW ── */
+    .skills-preview-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+
+    /* ── FEATURED PROJECTS ── */
+    .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .feat-main { grid-column: span 2; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--accent-light) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -.03em;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .cta-banner h2 em {
+      font-family: var(--ff-s); font-style: italic;
+      color: var(--accent); font-weight: 600;
+    }
+    .cta-banner p {
+      color: var(--text3); font-size: 1rem;
+      max-width: 480px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 3rem; }
+      .hero-right { order: -1; }
+      .hero-stats-row { justify-content: center; }
+      .about-preview-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-preview-grid { grid-template-columns: 1fr 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .feat-main { grid-column: span 1; }
+    }
+    @media (max-width: 600px) {
+      .hero-deco, .hero-deco2 { display: none; }
+      .skills-preview-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    Hello World
+
+<!-- ════════ NAVIGATION ════════ -->
+<header>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Lil Pokhrel Home">
+        <div class="nav-logo-mark" aria-hidden="true">LP</div>
+        Lil Pokhrel
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/skills.html">Skills</a></li>
+        <li><a href="pages/projects.html">Projects</a></li>
+        <li><a href="pages/experience.html">Experience</a></li>
+        <li class="nav-cta-wrap"><a href="pages/contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="nav-ham" id="navHam" aria-expanded="false" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/skills.html">Skills</a>
+    <a href="pages/projects.html">Projects</a>
+    <a href="pages/experience.html">Experience</a>
+    <a href="pages/contact.html" class="nav-mob-cta">Contact / Hire Me</a>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ════════ HERO ════════ -->
+  <section aria-label="Hero introduction">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <div class="avail-pill">
+            <span class="avail-dot"></span>
+            Available for Opportunities
+          </div>
+        </div>
+        <h1 class="hero-h1" style="opacity:0;animation:slideUp .8s .15s forwards">
+          Lilakant<br>
+          <span>"Lil"</span><br>
+          <em>Pokhrel</em>
+        </h1>
+        <p class="hero-sub" style="opacity:0;animation:slideUp .8s .3s forwards">
+          <strong>MSc Data Science (Distinction)</strong> — Subject Prize Winner.<br>
+          Full-Stack Developer &amp; Data Scientist based in London, UK, building intelligent systems where engineering meets analytics.
+        </p>
+        <div class="hero-actions" style="opacity:0;animation:slideUp .8s .45s forwards">
+          <a href="pages/projects.html" class="btn btn-primary btn-lg">View My Work →</a>
+          <a href="pages/contact.html" class="btn btn-outline btn-lg">Get In Touch</a>
+        </div>
+        <div class="hero-chips" style="opacity:0;animation:slideUp .8s .6s forwards">
+          <span class="hero-chip"><span>🐍</span> Python</span>
+          <span class="hero-chip"><span>⚛️</span> ReactJS</span>
+          <span class="hero-chip"><span>🤖</span> ML / AI</span>
+          <span class="hero-chip"><span>📊</span> Power BI</span>
+          <span class="hero-chip"><span>☁️</span> Azure</span>
+        </div>
+      </div>
+
+      <div class="hero-right" style="opacity:0;animation:fadeIn .9s .2s forwards">
+        <div class="hero-avatar-wrap">
+          <div class="hero-deco"></div>
+          <div class="hero-deco2"></div>
+          <div class="avatar-bg">
+            <span class="avatar-initials">LP</span>
+          </div>
+          <div class="avatar-badge">🏆 Subject Prize Winner</div>
+        </div>
+        <div class="hero-stats-row">
+          <div class="h-stat">
+            <div class="h-stat-n" data-count="4" data-suffix="+">0+</div>
+            <div class="h-stat-l">Years Experience</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n" data-count="10" data-suffix="+">0+</div>
+            <div class="h-stat-l">Projects</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n" data-count="2" data-suffix="×">0×</div>
+            <div class="h-stat-l">Distinction Degrees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item">Python</div><div class="marquee-item">ReactJS</div>
+      <div class="marquee-item">TensorFlow</div><div class="marquee-item">Django</div>
+      <div class="marquee-item">Power BI</div><div class="marquee-item">PyTorch</div>
+      <div class="marquee-item">MSSQL Server</div><div class="marquee-item">Azure</div>
+      <div class="marquee-item">MongoDB</div><div class="marquee-item">Scikit-learn</div>
+      <div class="marquee-item">TypeScript</div><div class="marquee-item">Tableau</div>
+      <div class="marquee-item">PySpark</div><div class="marquee-item">Node.js</div>
+      <!-- duplicate -->
+      <div class="marquee-item">Python</div><div class="marquee-item">ReactJS</div>
+      <div class="marquee-item">TensorFlow</div><div class="marquee-item">Django</div>
+      <div class="marquee-item">Power BI</div><div class="marquee-item">PyTorch</div>
+      <div class="marquee-item">MSSQL Server</div><div class="marquee-item">Azure</div>
+      <div class="marquee-item">MongoDB</div><div class="marquee-item">Scikit-learn</div>
+      <div class="marquee-item">TypeScript</div><div class="marquee-item">Tableau</div>
+      <div class="marquee-item">PySpark</div><div class="marquee-item">Node.js</div>
+    </div>
+  </div>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip">
+    <div class="container-sm">
+      <h2>
+        Bridging <em>data science</em> &amp; <em>software engineering</em> —<br>
+        delivering solutions that make a measurable difference.
+      </h2>
+    </div>
+  </div>
+
+  <!-- ════════ ABOUT PREVIEW ════════ -->
+  <section class="section about-preview" aria-label="About preview">
+    <div class="container">
+      <div class="about-preview-grid">
+        <div class="about-preview-text reveal">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title" style="margin-bottom:1.2rem">A technologist who builds with <em>purpose</em></h2>
+          <p>I'm <strong>Lilakant (Lil) Pokhrel</strong>, a London-based Data Scientist and Full-Stack Developer who graduated top of my MSc cohort at York St John University. I hold two Distinction degrees and bring 4+ years of hands-on engineering and data experience across Nepal and the UK.</p>
+          <p>My work spans from building production ReactJS &amp; Django applications at Pearl Infotech to designing Power BI dashboards for national insurance organisations — always finding the intersection of clean code and meaningful data.</p>
+          <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+            <a href="pages/about.html" class="btn btn-primary">Read My Story →</a>
+            <a href="pages/experience.html" class="btn btn-ghost">View Experience</a>
+          </div>
+        </div>
+        <div class="about-facts reveal reveal-delay-2">
+          <div class="about-fact">
+            <div class="af-icon">🎓</div>
+            <div>
+              <div class="af-label">Top Achievement</div>
+              <div class="af-val">MSc Data Science — Distinction</div>
+              <div class="af-sub">York St John University · 2024 · Subject Prize Winner 🏆</div>
+            </div>
+          </div>
+          <div class="about-fact">
+            <div class="af-icon">💼</div>
+            <div>
+              <div class="af-label">Current Roles</div>
+              <div class="af-val">Asst. Sales Manager + Data Analyst</div>
+              <div class="af-sub">Betfred UK &amp; Rastriya Jeewan Beema (Remote)</div>
+            </div>
+          </div>
+          <div class="about-fact">
+            <div class="af-icon">📍</div>
+            <div>
+              <div class="af-label">Location &amp; Availability</div>
+              <div class="af-val">London, United Kingdom 🇬🇧</div>
+              <div class="af-sub">Open to full-time roles &amp; collaborations</div>
+            </div>
+          </div>
+          <div class="about-fact">
+            <div class="af-icon">🌐</div>
+            <div>
+              <div class="af-label">Languages</div>
+              <div class="af-val">English · Nepali · Hindi</div>
+              <div class="af-sub">All spoken fluently</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ SKILLS PREVIEW ════════ -->
+  <section class="section" aria-label="Skills overview">
+    <div class="container">
+      <div class="section-header-row">
+        <div class="reveal">
+          <div class="eyebrow">Capabilities</div>
+          <h2 class="section-title">Skills &amp; <em>Technologies</em></h2>
+          <p class="section-sub">A broad toolkit built through real production work across data science &amp; web development.</p>
+        </div>
+        <a href="pages/skills.html" class="btn btn-ghost reveal reveal-delay-2">All Skills →</a>
+      </div>
+      <div class="skills-preview-grid">
+        <div class="skill-cat-card scc-1 reveal reveal-delay-1">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:var(--accent-light)">🐍</div>
+            <div class="skill-cat-name">Programming</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span><span class="skill-tag">R</span>
+            <span class="skill-tag">Java</span><span class="skill-tag">PHP</span>
+          </div>
+        </div>
+        <div class="skill-cat-card scc-2 reveal reveal-delay-2">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:var(--amber-light)">⚛️</div>
+            <div class="skill-cat-name">Web Stack</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">ReactJS</span><span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Django</span><span class="skill-tag">Flask</span>
+            <span class="skill-tag">Express</span><span class="skill-tag">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="skill-cat-card scc-3 reveal reveal-delay-3">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:var(--indigo-light)">🤖</div>
+            <div class="skill-cat-name">ML &amp; AI</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">Scikit-learn</span><span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span><span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span><span class="skill-tag">PySpark</span>
+          </div>
+        </div>
+        <div class="skill-cat-card scc-4 reveal reveal-delay-1">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:var(--accent-light)">🗄️</div>
+            <div class="skill-cat-name">Data &amp; Databases</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">SQL</span><span class="skill-tag">MSSQL Server</span>
+            <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span>
+          </div>
+        </div>
+        <div class="skill-cat-card scc-5 reveal reveal-delay-2">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:#f5eeff)">☁️</div>
+            <div class="skill-cat-name">Cloud &amp; DevOps</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">Azure</span><span class="skill-tag">GCP</span>
+            <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Bitbucket</span><span class="skill-tag">Selenium</span>
+          </div>
+        </div>
+        <div class="skill-cat-card scc-6 reveal reveal-delay-3">
+          <div class="skill-cat-head">
+            <div class="skill-cat-icon" style="background:#f5f8e5">📊</div>
+            <div class="skill-cat-name">Analytics &amp; Viz</div>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Neo4j</span><span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FEATURED PROJECTS ════════ -->
+  <section class="section" style="background:var(--bg2)" aria-label="Featured projects">
+    <div class="container">
+      <div class="section-header-row">
+        <div class="reveal">
+          <div class="eyebrow">Portfolio Highlights</div>
+          <h2 class="section-title">Featured <em>Projects</em></h2>
+        </div>
+        <a href="pages/projects.html" class="btn btn-ghost reveal reveal-delay-2">All Projects →</a>
+      </div>
+      <div class="featured-grid">
+        <div class="proj-card feat-main reveal">
+          <div class="proj-card-top">
+            <div class="proj-icon">🧠</div>
+            <span class="proj-num">001 · MSc Research</span>
+          </div>
+          <div class="proj-card-body">
+            <div style="margin-bottom:.6rem"><span class="badge badge-green">🏆 Distinction Research</span></div>
+            <div class="proj-title">Text Summarisation with Deep Learning Integration</div>
+            <div class="proj-desc">Advanced NLP pipeline combining transformer architectures (BERT, T5) for automatic text summarisation. Researched extractive vs abstractive approaches with ROUGE/BLEU benchmarking across domain-specific corpora. MSc Applied Research Project — York St John University 2024.</div>
+            <div class="proj-tags">
+              <span class="proj-tag badge-green">Python</span>
+              <span class="proj-tag badge-green">PyTorch</span>
+              <span class="proj-tag badge-indigo">Transformers</span>
+              <span class="proj-tag badge-indigo">NLP</span>
+              <span class="proj-tag badge-green">HuggingFace</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card reveal reveal-delay-1">
+          <div class="proj-card-top">
+            <div class="proj-icon">📈</div>
+            <span class="proj-num">002 · ML</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-title">Loan Approval Prediction</div>
+            <div class="proj-desc">End-to-end ML pipeline for loan classification using XGBoost, SHAP values for interpretability, and feature engineering.</div>
+            <div class="proj-tags">
+              <span class="proj-tag badge-green">Scikit-learn</span>
+              <span class="proj-tag badge-amber">XGBoost</span>
+              <span class="proj-tag badge-green">SHAP</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card reveal reveal-delay-2">
+          <div class="proj-card-top">
+            <div class="proj-icon">🛒</div>
+            <span class="proj-num">003 · Full-Stack</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-title">Hamro Bazar — E-Commerce Platform</div>
+            <div class="proj-desc">Full-featured MERN stack marketplace with product listings, cart management, order processing, and admin analytics dashboard.</div>
+            <div class="proj-tags">
+              <span class="proj-tag badge-indigo">ReactJS</span>
+              <span class="proj-tag badge-green">Node.js</span>
+              <span class="proj-tag badge-amber">MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CTA BANNER ════════ -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="container-sm reveal">
+      <div class="eyebrow" style="justify-content:center">Ready to collaborate?</div>
+      <h2>Let's build something <em>extraordinary</em> together</h2>
+      <p>Whether it's a data pipeline, a machine learning model, or a full-stack web application — I'm ready to contribute.</p>
+      <div class="cta-actions">
+        <a href="pages/contact.html" class="btn btn-primary btn-lg">Get In Touch →</a>
+        <a href="mailto:lil.pokhrel695@gmail.com" class="btn btn-outline btn-lg">✉ Email Me</a>
+        <a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">🔗 LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">LP</div>
+          Lil Pokhrel
+        </div>
+        <p class="footer-desc">MSc Data Science graduate &amp; Full-Stack Developer. Based in London, UK. Building intelligent, data-driven solutions.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">in</a>
+          <a href="mailto:lil.pokhrel695@gmail.com" aria-label="Email" title="Email">✉</a>
+          <a href="tel:+447887622525" aria-label="Phone" title="Phone">📱</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <div class="footer-col-links">
+          <a href="index.html">Home</a>
+          <a href="pages/about.html">About</a>
+          <a href="pages/skills.html">Skills</a>
+          <a href="pages/projects.html">Projects</a>
+          <a href="pages/experience.html">Experience</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Skills</div>
+        <div class="footer-col-links">
+          <a href="pages/skills.html">Python &amp; ML</a>
+          <a href="pages/skills.html">Full-Stack Dev</a>
+          <a href="pages/skills.html">Data Analytics</a>
+          <a href="pages/skills.html">Power BI</a>
+          <a href="pages/skills.html">Cloud &amp; DevOps</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-col-links">
+          <a href="mailto:lil.pokhrel695@gmail.com">lil.pokhrel695@gmail.com</a>
+          <a href="tel:+447887622525">+44 7887 622 525</a>
+          <a href="#">London, United Kingdom</a>
+          <a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">LinkedIn Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Lilakant (Lil) Pokhrel · All rights reserved</p>
+      <div class="footer-bottom-links">
+        <a href="pages/about.html">About</a>
+        <a href="pages/contact.html">Contact</a>
+        <a href="mailto:lil.pokhrel695@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+@keyframes slideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+</style>
+<script src="js/main.js"></script>
 </body>
 </html>
