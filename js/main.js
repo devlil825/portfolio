@@ -132,90 +132,69 @@
   }
 
   /* ── CONTACT FORM ── */
- const form = document.getElementById('contactForm');
-if (form) {
+const form = document.getElementById('contactForm');
+ if (form) {
   form.addEventListener('submit', async function (e) {
-
     e.preventDefault();
 
-    const name = (form.querySelector('#firstName')?.value || '').trim();
+    const name  = (form.querySelector('#firstName')?.value || '').trim();
     const email = (form.querySelector('#email')?.value || '').trim();
-    const msg = (form.querySelector('#message')?.value || '').trim();
-
-    const btn = form.querySelector('[type="submit"]');
-
-    if (!name) {
-      showMsg('Please enter your name.', 'error');
-      return;
-    }
-
+    const msg   = (form.querySelector('#message')?.value || '').trim();
+    const btn   = form.querySelector('[type="submit"]');
+    if (!name)  { showMsg('Please enter your name.', 'error'); return; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showMsg('Please enter a valid email address.', 'error');
+      showMsg('Please enter a valid email address.', 'error'); 
       return;
     }
-
-    if (!msg) {
-      showMsg('Please write a message.', 'error');
-      return;
-    }
-
+    if (!msg)   { showMsg('Please write a message.', 'error'); return; }
     btn.disabled = true;
-
-    const originalText = btn.innerHTML;
-
-    btn.innerHTML = '<span>⏳</span><span>Sending...</span>';
-
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<span>⏳</span><span>Sending…</span>';
     try {
-
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
+      const response = await fetch("https://formspree.io/f/mdaybrkj", {
+        method: "POST",
         headers: {
-          'Accept': 'application/json'
-        }
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message: msg
+        })
       });
-
+      console.log("Status:", response.status);
       if (response.ok) {
-
-        showMsg('✅ Message sent successfully!', 'success');
-
+        showMsg('✅ Message sent! Lil will reply within 24 hours.', 'success');
         form.reset();
-
       } else {
-
-        showMsg('❌ Failed to send message.', 'error');
-
+        const data = await response.json().catch(() => ({}));
+        showMsg(data?.error || '❌ Failed to send message.', 'error');
       }
-
     } catch (error) {
-
       showMsg('❌ Network error. Please try again.', 'error');
-
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = orig;
     }
-
-    btn.disabled = false;
-
-    btn.innerHTML = originalText;
-
   });
-}
-    function showMsg(text, type) {
-      let el = document.getElementById('formMsg');
-      if (!el) {
-        el = document.createElement('div');
-        el.id = 'formMsg';
-        form.appendChild(el);
-      }
-      el.textContent = text;
-      const isOk = type === 'success';
-      el.style.cssText = `
-        margin-top:.9rem;padding:.85rem 1.1rem;border-radius:8px;
-        font-size:.86rem;font-weight:600;text-align:center;
-        background:${isOk ? 'var(--accent-light)' : '#fef2f2'};
-        color:${isOk ? 'var(--accent)' : '#dc2626'};
-        border:1px solid ${isOk ? 'rgba(42,125,111,.2)' : 'rgba(220,38,38,.2)'};
-      `;
-    }
-  }
+  function showMsg(text, type) {
+    let el = document.getElementById('formMsg');
 
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'formMsg';
+      form.appendChild(el);
+    }
+    el.textContent = text;
+    const isOk = type === 'success';
+    el.style.cssText = `
+      margin-top:.9rem;padding:.85rem 1.1rem;border-radius:8px;
+      font-size:.86rem;font-weight:600;text-align:center;
+      background:${isOk ? 'var(--accent-light)' : '#fef2f2'};
+      color:${isOk ? 'var(--accent)' : '#dc2626'};
+      border:1px solid ${isOk ? 'rgba(42,125,111,.2)' : 'rgba(220,38,38,.2)'};
+    `;
+  }
+}
 })();
