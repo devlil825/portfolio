@@ -132,33 +132,73 @@
   }
 
   /* ── CONTACT FORM ── */
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name  = (form.querySelector('#firstName')?.value || '').trim();
-      const email = (form.querySelector('#email')?.value || '').trim();
-      const msg   = (form.querySelector('#message')?.value || '').trim();
-      const btn   = form.querySelector('[type="submit"]');
+ const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', async function (e) {
 
-      if (!name)  { showMsg('Please enter your name.', 'error'); return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showMsg('Please enter a valid email address.', 'error'); return;
-      }
-      if (!msg)   { showMsg('Please write a message.', 'error'); return; }
+    e.preventDefault();
 
-      btn.disabled = true;
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<span>⏳</span><span>Sending…</span>';
+    const name = (form.querySelector('#firstName')?.value || '').trim();
+    const email = (form.querySelector('#email')?.value || '').trim();
+    const msg = (form.querySelector('#message')?.value || '').trim();
 
-      setTimeout(() => {
-        showMsg('✅ Message sent! Lil will reply within 24 hours.', 'success');
+    const btn = form.querySelector('[type="submit"]');
+
+    if (!name) {
+      showMsg('Please enter your name.', 'error');
+      return;
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showMsg('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    if (!msg) {
+      showMsg('Please write a message.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+
+    const originalText = btn.innerHTML;
+
+    btn.innerHTML = '<span>⏳</span><span>Sending...</span>';
+
+    try {
+
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+
+        showMsg('✅ Message sent successfully!', 'success');
+
         form.reset();
-        btn.disabled = false;
-        btn.innerHTML = orig;
-      }, 1200);
-    });
 
+      } else {
+
+        showMsg('❌ Failed to send message.', 'error');
+
+      }
+
+    } catch (error) {
+
+      showMsg('❌ Network error. Please try again.', 'error');
+
+    }
+
+    btn.disabled = false;
+
+    btn.innerHTML = originalText;
+
+  });
+}
     function showMsg(text, type) {
       let el = document.getElementById('formMsg');
       if (!el) {
