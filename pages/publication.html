@@ -79,7 +79,17 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: .15rem .5rem;
-      margin-bottom: .6rem;
+      margin: 0 .3rem .6rem 0;
+    }
+    .pub-cite { margin-top: .6rem; }
+    .pub-cite p {
+      font-family: inherit;
+      font-size: .85rem;
+      line-height: 1.7;
+      background: var(--bg2);
+      border-left: 3px solid var(--indigo);
+      padding: .8rem 1rem;
+      overflow-wrap: anywhere;
     }
     .pub-title {
       font-family: var(--ff-s, 'Lora', Georgia, serif);
@@ -214,6 +224,39 @@
           -->
 
           <li class="pub">
+            <div class="pub-year">2026</div>
+            <div>
+              <span class="pub-type">Journal Article</span>
+              <span class="pub-type">Peer-reviewed</span>
+              <span class="pub-type">Open Access</span>
+              <h3 class="pub-title">A Comparative Study of Hybrid Text Summarization Techniques Using Traditional, Static, and Contextual Word Embeddings</h3>
+              <p class="pub-authors"><strong>Lilakant Pokhrel</strong>, Sangita Pokhrel, Swathi Ganesan, Nalinda Somasiri</p>
+              <p class="pub-venue">Artificial Intelligence and Applications, Bon View Publishing, 2026 (Online First)</p>
+
+              <details class="pub-abstract">
+                <summary>Summary</summary>
+                <p>This paper builds a hybrid extractive and abstractive summarisation system and compares word embeddings across three families: traditional (Count Vector, TF-IDF), static (Word2Vec, GloVe, FastText) and contextual (ELMo, GPT, BERT). Eight summarisation techniques were integrated into a Django web application and evaluated with ROUGE on the CNN/DailyMail dataset. GPT gave the strongest results, followed by TextRank and ELMo-based systems.</p>
+              </details>
+
+              <details class="pub-abstract pub-cite">
+                <summary>Cite</summary>
+                <p>Pokhrel, L., Pokhrel, S., Ganesan, S., &amp; Somasiri, N. (2026). A comparative study of hybrid text summarization techniques using traditional, static, and contextual word embeddings. <em>Artificial Intelligence and Applications</em>. https://doi.org/10.47852/bonviewAIA62026330</p>
+              </details>
+
+              <ul class="pub-keywords" aria-label="Keywords">
+                <li>Text summarization</li><li>Hybrid summarization</li><li>Contextual embeddings</li><li>Word embeddings</li><li>NLP</li>
+              </ul>
+
+              <div class="pub-links">
+                <a class="pub-link" href="https://ojs.bonviewpress.com/index.php/AIA/article/view/6330" target="_blank" rel="noopener">Article</a>
+                <a class="pub-link" href="https://ojs.bonviewpress.com/index.php/AIA/article/view/6330/2066" target="_blank" rel="noopener">PDF</a>
+                <a class="pub-link" href="https://doi.org/10.47852/bonviewAIA62026330" target="_blank" rel="noopener">DOI</a>
+                <a class="pub-link" href="https://ojs.bonviewpress.com/index.php/AIA/citationstylelanguage/download/bibtex?submissionId=6330&amp;publicationId=7508&amp;issueId=20" rel="noopener">BibTeX</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
             <div class="pub-year">2024</div>
             <div>
               <span class="pub-type">MSc Dissertation</span>
@@ -223,26 +266,22 @@
 
               <details class="pub-abstract">
                 <summary>Abstract</summary>
-                <p>Currently, there is an exponential growth in textual data due to the rapid expansion of internet technology and various social and entertainment platforms. 
-                    his is causing widespread negative effects on document and text management, text classification, and information retrieval, among other areas. 
-                    To address the challenge of translating large volumes of text into natural-sounding language that retains citations, quotes, and references, summarization research is gaining significant international attention. The focus is on developing an effective hybrid (extractive and abstractive) summarization system by implementing different word embedding and summarization techniques. The study examines various embedding methods, from traditional approaches (Count Vector, TF-IDF) to static word embeddings (Word2Vec, GloVe, FastText), and contextualized embeddings (ELMo, GPT, BERT). It employs efficient extractive methods (TF-IDF, Textrank, LSA, Word2Vec, ELMo with K-means) and abstractive methods (Bi-LSTM, GPT) to create an effective summarization system. By integrating eight summarization techniques into Django-based (Python) web applications, the research finds that GPT performs particularly well, followed by TextRank and Elmo-based systems, with their ROUGE scores compared. The study also discusses the challenges faced in developing such a system and outlines future directions for ongoing research.
-
-</p>
+                <p>This study compares extractive and abstractive approaches to automatic text summarisation using transformer architectures, including BERT and T5. Pre-trained models were fine-tuned on domain-specific corpora and evaluated on benchmark datasets using ROUGE and BLEU metrics.</p>
               </details>
 
               <ul class="pub-keywords" aria-label="Keywords">
-                <li>text summarization</li><li>hybrid summarization</li><li>contextual embeddings</li><li>word embeddings</li><li>natural language processing</li>
+                <li>NLP</li><li>BERT</li><li>T5</li><li>Abstractive summarisation</li><li>ROUGE</li>
               </ul>
 
               <div class="pub-links">
                 <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">PDF</a>
-                <a class="pub-link is-pending" href="https://doi.org/10.47852/bonviewAIA62026330" target="_blank" rel="noopener">DOI</a>
+                <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">DOI</a>
                 <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">Code</a>
               </div>
             </div>
           </li>
 
-   
+          <!-- TEMPLATE: journal or conference paper (uncomment and edit)
           <li class="pub">
             <div class="pub-year">2026</div>
             <div>
@@ -260,6 +299,7 @@
               </div>
             </div>
           </li>
+          -->
 
         </ol>
       </div>
@@ -284,6 +324,7 @@
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">
