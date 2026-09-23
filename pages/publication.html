@@ -1,270 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects — Lil Pokhrel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research &amp; Publications — Lil Pokhrel</title>
+  <meta name="description" content="Research and publications by Lilakant (Lil) Pokhrel in natural language processing, machine learning and data science.">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-  @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
-
-  /* PAGE HERO */
-  .page-hero {
-    background: linear-gradient(135deg, var(--indigo-light) 0%, var(--bg2) 100%);
-    padding: calc(var(--nav-h) + 3rem) 1.1rem 3rem;
-    border-bottom: 1px solid var(--border);
-    width: 100%;
-  }
-  .page-hero h1 {
-    font-size: clamp(2rem, 7vw, 5rem);
-    font-weight: 800; letter-spacing: -.04em;
-    line-height: .96; color: var(--text); margin-bottom: .9rem;
-  }
-  .page-hero h1 em { font-family: var(--ff-s); font-style: italic; color: var(--indigo); font-weight: 600; }
-
-  /* PROJECTS GRID — mobile first: single column */
-  .proj-grid-main {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-  .proj-card-featured { grid-column: span 1; }
-
-  /* Featured card inner layout — stacked on mobile */
-  .feat-proj-inner {
-    display: flex;
-    flex-direction: column;
-  }
-  .feat-proj-visual {
-    background: linear-gradient(135deg, var(--accent-pale), var(--accent-light));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem;
-    padding: 2rem;
-    border-radius: var(--r-lg) var(--r-lg) 0 0;
-    min-height: 140px;
-  }
-  .feat-proj-body { padding: 1.5rem; }
-  .feat-proj-body .proj-title { font-size: 1.1rem; margin-bottom: .7rem; line-height: 1.3; }
-  .feat-proj-body .proj-desc { font-size: .87rem; line-height: 1.65; }
-
-  /* Tablet: 2-column grid */
-  @media (min-width: 600px) {
-    .proj-grid-main {
-      grid-template-columns: 1fr 1fr;
-      gap: 1.3rem;
+    /* ---------- Hero ---------- */
+    .page-hero {
+      padding: calc(var(--nav-h) + 3rem) 1.1rem 2.5rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
     }
-    .proj-card-featured { grid-column: 1 / -1; }
-  }
+    .page-hero h1 {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      max-width: 60ch;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text2);
+    }
+    .research-areas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1.6rem;
+      padding: 0;
+      list-style: none;
+    }
+    .research-areas li {
+      font-size: .8rem;
+      font-weight: 500;
+      padding: .35rem .8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg, #fff);
+      color: var(--text2);
+    }
 
-  /* Desktop: auto-fill + side-by-side featured card */
-  @media (min-width: 900px) {
-    .page-hero { padding: calc(var(--nav-h) + 4rem) 2rem 4rem; }
-    .proj-grid-main {
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+    /* ---------- Publication list ---------- */
+    .pub-section + .pub-section { margin-top: 3.5rem; }
+    .pub-heading {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      padding-bottom: .8rem;
+      margin-bottom: .5rem;
+      border-bottom: 2px solid var(--text);
     }
-    .proj-card-featured { grid-column: 1 / -1; }
-    .feat-proj-inner {
-      flex-direction: row;
+    .pub-list { list-style: none; padding: 0; margin: 0; }
+
+    .pub {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .4rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .feat-proj-visual {
-      flex: 0 0 280px;
-      font-size: 4.5rem;
-      padding: 3rem 2rem;
-      border-radius: var(--r-lg) 0 0 var(--r-lg);
-      min-height: auto;
+    .pub-year {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--indigo);
     }
-    .feat-proj-body { padding: 2rem 2.2rem; flex: 1; }
-    .feat-proj-body .proj-title { font-size: 1.3rem; }
-    .feat-proj-body .proj-desc { font-size: .92rem; }
-  }
-</style>
+    .pub-type {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--text2);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .15rem .5rem;
+      margin-bottom: .6rem;
+    }
+    .pub-title {
+      font-family: var(--ff-s, 'Lora', Georgia, serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text);
+      margin: 0 0 .5rem;
+    }
+    .pub-authors { font-size: .92rem; color: var(--text2); margin: 0 0 .2rem; }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+    .pub-venue {
+      font-family: var(--ff-s, 'Lora', Georgia, serif);
+      font-style: italic;
+      font-size: .92rem;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .pub-abstract summary {
+      cursor: pointer;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--indigo);
+      width: fit-content;
+    }
+    .pub-abstract p {
+      font-family: var(--ff-s, 'Lora', Georgia, serif);
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--text2);
+      max-width: 70ch;
+      margin: .8rem 0 0;
+    }
+
+    .pub-keywords { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+    .pub-keywords li { font-size: .75rem; color: var(--muted); }
+    .pub-keywords li:not(:last-child)::after { content: ","; }
+
+    .pub-links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+    .pub-link {
+      font-size: .8rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--indigo);
+      border: 1px solid var(--indigo);
+      border-radius: 6px;
+      padding: .4rem .9rem;
+      transition: background .15s, color .15s;
+    }
+    .pub-link:hover { background: var(--indigo); color: #fff; }
+    .pub-link:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+    /* Placeholder links: remove the "is-pending" class once a real URL is added */
+    .pub-link.is-pending {
+      color: var(--muted);
+      border-color: var(--border);
+      border-style: dashed;
+      pointer-events: none;
+    }
+
+    .pub-empty {
+      padding: 1.8rem 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (min-width: 720px) {
+      .page-hero { padding: calc(var(--nav-h) + 4rem) 2rem 3.5rem; }
+      .pub { grid-template-columns: 5.5rem 1fr; gap: 1.5rem; padding: 2.2rem 0; }
+      .pub-year { padding-top: .2rem; }
+    }
+  </style>
 </head>
 <body>
+
 <header>
-  <nav class="nav"><div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">LP</div>Lil Pokhrel</a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li>
-      <li><a href="skills.html">Skills</a></li><li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li class="nav-cta-wrap"><a href="contact.html" class="nav-cta">Hire Me</a></li>
-    </ul>
-    <button class="nav-ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div></nav>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">LP</div>Lil Pokhrel</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li class="nav-cta-wrap"><a href="contact.html" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <button class="nav-ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
   <div class="nav-mobile" id="navMobile">
-    <a href="../index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
-    <a href="projects.html">Projects</a><a href="experience.html">Experience</a>
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="experience.html">Experience</a>
     <a href="contact.html" class="nav-mob-cta">Contact / Hire Me</a>
   </div>
 </header>
 
 <main class="page-wrap">
+
   <section class="page-hero">
     <div class="container">
-      <div class="eyebrow" style="opacity:0;animation:slideUp .7s .1s forwards">My Portfolio</div>
-      <h1 style="opacity:0;animation:slideUp .7s .2s forwards">Key <em>Projects</em><br>&amp; Work</h1>
-      <p style="opacity:0;animation:slideUp .7s .35s forwards;font-size:1rem;color:var(--text2);max-width:540px;line-height:1.75">From deep learning research to production web applications — projects demonstrating the full breadth of my technical capabilities.</p>
+      <h1>Research &amp; Publications</h1>
+      <p>My research focuses on natural language processing and applied machine learning, with an emphasis on transformer models, rigorous evaluation and interpretable results.</p>
+      <ul class="research-areas" aria-label="Research areas">
+        <li>Natural Language Processing</li>
+        <li>Text Summarisation</li>
+        <li>Transformer Models</li>
+        <li>Interpretable Machine Learning</li>
+        <li>Applied Data Science</li>
+      </ul>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <!-- FILTERS -->
-      <div style="margin-bottom:2.5rem" class="reveal">
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All Projects</button>
-          <button class="filter-tab" data-filter="ml">Machine Learning</button>
-          <button class="filter-tab" data-filter="web">Web Development</button>
-          <button class="filter-tab" data-filter="data">Data Analytics</button>
-          <button class="filter-tab" data-filter="security">Security</button>
-        </div>
+
+      <!-- ============ PUBLISHED RESEARCH ============ -->
+      <div class="pub-section">
+        <h2 class="pub-heading">Published Research</h2>
+        <ol class="pub-list" reversed>
+
+          <!--
+            HOW TO ADD A PAPER
+            Copy one <li class="pub">…</li> block and edit it.
+            Put the newest paper at the top.
+            For each link: replace href="#" with the real URL and delete class "is-pending".
+          -->
+
+          <li class="pub">
+            <div class="pub-year">2024</div>
+            <div>
+              <span class="pub-type">MSc Dissertation</span>
+              <h3 class="pub-title">Text Summarisation with Deep Learning Integration</h3>
+              <p class="pub-authors"><strong>Lilakant Pokhrel</strong></p>
+              <p class="pub-venue">MSc Data Science, York St John University, 2024 (Distinction)</p>
+
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>This study compares extractive and abstractive approaches to automatic text summarisation using transformer architectures, including BERT and T5. Pre-trained models were fine-tuned on domain-specific corpora and evaluated on benchmark datasets using ROUGE and BLEU metrics.</p>
+              </details>
+
+              <ul class="pub-keywords" aria-label="Keywords">
+                <li>NLP</li><li>BERT</li><li>T5</li><li>Abstractive summarisation</li><li>ROUGE</li>
+              </ul>
+
+              <div class="pub-links">
+                <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">PDF</a>
+                <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">DOI</a>
+                <a class="pub-link is-pending" href="#" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- TEMPLATE: journal or conference paper (uncomment and edit)
+          <li class="pub">
+            <div class="pub-year">2026</div>
+            <div>
+              <span class="pub-type">Journal Article</span>
+              <h3 class="pub-title">Paper title</h3>
+              <p class="pub-authors"><strong>Lilakant Pokhrel</strong>, Co-author Name</p>
+              <p class="pub-venue">Journal or Conference Name, Volume(Issue), pages</p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Abstract text.</p>
+              </details>
+              <div class="pub-links">
+                <a class="pub-link" href="https://…" target="_blank" rel="noopener">PDF</a>
+                <a class="pub-link" href="https://doi.org/…" target="_blank" rel="noopener">DOI</a>
+              </div>
+            </div>
+          </li>
+          -->
+
+        </ol>
       </div>
 
-      <div class="proj-grid-main">
-
-        <!-- FEATURED: Text Summarisation -->
-        <div class="proj-card proj-card-featured reveal" data-category="ml">
-          <div class="feat-proj-inner">
-            <div class="feat-proj-visual">🧠</div>
-            <div class="feat-proj-body">
-              <div style="margin-bottom:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
-                <span class="badge badge-green">🏆 MSc Research</span>
-                <span class="badge badge-green">Distinction</span>
-              </div>
-              <div style="font-family:var(--ff-m);font-size:.63rem;color:var(--muted);margin-bottom:.6rem;letter-spacing:.08em">001 · Applied Research Project</div>
-              <div class="proj-title">Text Summarisation with Deep Learning Integration</div>
-              <div class="proj-desc">Advanced NLP pipeline combining transformer architectures (BERT, T5) for automatic text summarisation. Compared extractive vs abstractive approaches across benchmark datasets with ROUGE and BLEU evaluation metrics. Fine-tuned pre-trained models on domain-specific corpora. This was the capstone Applied Research Project of my MSc Data Science programme at York St John University, 2024.</div>
-              <div class="proj-tags" style="margin-top:1.2rem">
-                <span class="proj-tag badge-green">Python</span>
-                <span class="proj-tag badge-green">PyTorch</span>
-                <span class="proj-tag badge-indigo">BERT / T5</span>
-                <span class="proj-tag badge-indigo">HuggingFace</span>
-                <span class="proj-tag badge-indigo">NLP</span>
-                <span class="proj-tag badge-green">ROUGE / BLEU</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Loan Approval -->
-        <div class="proj-card reveal reveal-delay-1" data-category="ml">
-          <div class="proj-card-top"><div class="proj-icon">📈</div><span class="proj-num">002 · Machine Learning</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Loan Approval Prediction System</div>
-            <div class="proj-desc">End-to-end ML classification pipeline using XGBoost, Random Forest, and Gradient Boosting. Applied SHAP values for interpretability, cross-validation, and extensive feature engineering for actionable risk assessment insights.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-green">Scikit-learn</span><span class="proj-tag badge-amber">XGBoost</span>
-              <span class="proj-tag badge-green">Pandas</span><span class="proj-tag badge-indigo">SHAP</span><span class="proj-tag badge-green">Matplotlib</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Malicious URL -->
-        <div class="proj-card reveal reveal-delay-2" data-category="security">
-          <div class="proj-card-top"><div class="proj-icon">🔒</div><span class="proj-num">003 · Security + ML</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Malicious URL Detection System</div>
-            <div class="proj-desc">Real-time URL threat classifier using ML and NLP feature extraction. Identified phishing, malware, and spam URLs with high precision. Applied lexical, host-based, and content-based features with an ensemble model pipeline.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-amber">Cybersecurity</span><span class="proj-tag badge-indigo">NLP</span>
-              <span class="proj-tag badge-green">Scikit-learn</span><span class="proj-tag badge-green">Python</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Retail Sales -->
-        <div class="proj-card reveal reveal-delay-1" data-category="data">
-          <div class="proj-card-top"><div class="proj-icon">🏪</div><span class="proj-num">004 · Data Analytics</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Retail Sales Forecasting</div>
-            <div class="proj-desc">Time-series forecasting using ARIMA, Facebook Prophet, and LSTM neural networks to predict retail sales. Delivered actionable insights via interactive Tableau dashboards with seasonal decomposition and confidence intervals.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-indigo">LSTM</span><span class="proj-tag badge-amber">Prophet</span>
-              <span class="proj-tag badge-green">Tableau</span><span class="proj-tag badge-green">Pandas</span><span class="proj-tag badge-amber">ARIMA</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Book Karobar -->
-        <div class="proj-card reveal reveal-delay-2" data-category="web">
-          <div class="proj-card-top"><div class="proj-icon">📚</div><span class="proj-num">005 · Full-Stack Web App</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Book Karobar — Accounting Web App</div>
-            <div class="proj-desc">BSc final year project: comprehensive web accounting platform for SMEs featuring double-entry bookkeeping, invoice management, multi-user RBAC, financial reporting, and complete audit trails. Built with Django.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-amber">Django</span><span class="proj-tag badge-green">Python</span>
-              <span class="proj-tag badge-green">MySQL</span><span class="proj-tag badge-indigo">JavaScript</span><span class="proj-tag badge-amber">Bootstrap</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hamro Bazar -->
-        <div class="proj-card reveal reveal-delay-1" data-category="web">
-          <div class="proj-card-top"><div class="proj-icon">🛒</div><span class="proj-num">006 · E-Commerce</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Hamro Bazar — E-Commerce Platform</div>
-            <div class="proj-desc">Full-featured MERN stack marketplace: product listings, cart management, order processing, payment integration, and admin analytics dashboard. Built and deployed for live production use.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-indigo">ReactJS</span><span class="proj-tag badge-green">Node.js</span>
-              <span class="proj-tag badge-amber">MongoDB</span><span class="proj-tag badge-green">Express</span><span class="proj-tag badge-indigo">REST API</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Insurance Fraud -->
-        <div class="proj-card reveal reveal-delay-2" data-category="data">
-          <div class="proj-card-top"><div class="proj-icon">🛡️</div><span class="proj-num">007 · Fraud Detection</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Insurance Fraud Detection &amp; Analytics</div>
-            <div class="proj-desc">Anomaly detection models to flag fraudulent insurance claims at Rastriya Jeewan Beema. Power BI dashboards tracking premiums, claims KPIs, and customer retention for executive leadership teams.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-amber">Power BI</span><span class="proj-tag badge-green">Python</span>
-              <span class="proj-tag badge-amber">MSSQL</span><span class="proj-tag badge-indigo">Anomaly Detection</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- KPI Dashboard -->
-        <div class="proj-card reveal reveal-delay-1" data-category="data">
-          <div class="proj-card-top"><div class="proj-icon">📊</div><span class="proj-num">008 · BI Dashboard</span></div>
-          <div class="proj-card-body">
-            <div class="proj-title">Enterprise KPI Dashboard Suite</div>
-            <div class="proj-desc">Comprehensive Power BI and Tableau dashboard suite for national insurance organisation — daily/monthly/yearly performance, claims analysis, branch comparisons, and financial reporting via complex MSSQL stored procedures.</div>
-            <div class="proj-tags">
-              <span class="proj-tag badge-amber">Power BI</span><span class="proj-tag badge-amber">Tableau</span>
-              <span class="proj-tag badge-amber">MSSQL Server</span><span class="proj-tag badge-green">DAX</span><span class="proj-tag badge-green">SQL</span>
-            </div>
-          </div>
-        </div>
-
+      <!-- ============ WORK IN PROGRESS ============ -->
+      <div class="pub-section">
+        <h2 class="pub-heading">Under Review &amp; In Progress</h2>
+        <p class="pub-empty">Papers currently under review will be listed here.</p>
+        <!-- Replace the paragraph above with an <ol class="pub-list"> using the same <li class="pub"> blocks. -->
       </div>
+
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section" style="background:var(--accent-light);text-align:center;border-top:1px solid var(--border)">
-    <div class="container-sm reveal">
-      <div class="eyebrow" style="justify-content:center">Interested?</div>
-      <h2 class="section-title" style="margin-bottom:1rem">Want to discuss a <em>project</em>?</h2>
-      <p class="section-sub" style="margin:0 auto 2rem">I'm open to exciting full-time roles, contract projects, and data science collaborations in the UK and beyond.</p>
+    <div class="container-sm">
+      <h2 class="section-title" style="margin-bottom:1rem">Interested in collaborating?</h2>
+      <p class="section-sub" style="margin:0 auto 2rem">I welcome research collaborations and conversations in NLP, machine learning and data science.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="contact.html" class="btn btn-primary btn-lg">Get In Touch →</a>
-        <a href="experience.html" class="btn btn-outline btn-lg">View Experience</a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Get in touch</a>
+        <a href="projects.html" class="btn btn-outline btn-lg">View projects</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand"><div class="footer-logo"><div class="footer-logo-mark">LP</div>Lil Pokhrel</div><p class="footer-desc">MSc Data Science &amp; Full-Stack Developer. London, UK.</p><div class="footer-social"><a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">in</a><a href="mailto:lil.pokhrel695@gmail.com">✉</a><a href="tel:+447887622525">📱</a></div></div>
-      <div><div class="footer-col-title">Navigation</div><div class="footer-col-links"><a href="../index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a></div></div>
-      <div><div class="footer-col-title">Contact</div><div class="footer-col-links"><a href="mailto:lil.pokhrel695@gmail.com">lil.pokhrel695@gmail.com</a><a href="tel:+447887622525">+44 7887 622 525</a><a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">LinkedIn</a></div></div>
-      <div><div class="footer-col-title">Pages</div><div class="footer-col-links"><a href="skills.html">Skills</a><a href="experience.html">Experience</a><a href="contact.html">Hire Me</a></div></div>
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="footer-logo-mark">LP</div>Lil Pokhrel</div>
+        <p class="footer-desc">MSc Data Science &amp; Full-Stack Developer. London, UK.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="mailto:lil.pokhrel695@gmail.com" aria-label="Email">✉</a>
+          <a href="tel:+447887622525" aria-label="Phone">📱</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <div class="footer-col-links">
+          <a href="../index.html">Home</a><a href="about.html">About</a><a href="skills.html">Skills</a>
+          <a href="projects.html">Projects</a><a href="research.html">Research</a>
+          <a href="experience.html">Experience</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-col-links">
+          <a href="mailto:lil.pokhrel695@gmail.com">lil.pokhrel695@gmail.com</a>
+          <a href="tel:+447887622525">+44 7887 622 525</a>
+          <a href="https://linkedin.com/in/lilakant-pokhrel-bb606332" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
     </div>
-    <div class="footer-bottom"><p class="footer-copy">© 2025 Lilakant (Lil) Pokhrel</p></div>
+    <div class="footer-bottom"><p class="footer-copy">© 2026 Lilakant (Lil) Pokhrel</p></div>
   </div>
 </footer>
 
